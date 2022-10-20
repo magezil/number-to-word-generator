@@ -15,6 +15,7 @@ def generate_combinations(num_string):
 def generate_helper(num_string, string_so_far):
     if not num_string:
         print(num_string)
+        return
     current = num_string[0]
     if len(num_string) == 1:
         for char in nums_to_letters[current]:
