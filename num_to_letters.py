@@ -1,4 +1,5 @@
 import argparse
+import enchant
 
 nums_to_letters = {
     '2': 'ABC',
@@ -11,6 +12,8 @@ nums_to_letters = {
     '9': 'WXYZ'
 }
 
+checker = enchant.Dict("en_US")
+
 def generate_combinations(num_string):
     return generate_helper(num_string, '')
 
@@ -21,7 +24,9 @@ def generate_helper(num_string, string_so_far):
     current = num_string[0]
     if len(num_string) == 1:
         for char in nums_to_letters[current]:
-            print(string_so_far + char)
+            word = string_so_far + char
+            if checker.check(word):
+                print(string_so_far + char)
         return 
     if current in nums_to_letters:
         for char in nums_to_letters[current]:
