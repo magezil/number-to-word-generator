@@ -1,3 +1,5 @@
+import argparse
+
 nums_to_letters = {
     '2': 'ABC',
     '3': 'DEF',
@@ -28,4 +30,7 @@ def generate_helper(num_string, string_so_far):
         generate_helper(num_string[1:], string_so_far + current)
 
 if __name__ == '__main__':
-    generate_combinations('79849664')
+    parser = argparse.ArgumentParser(description="Convert numbers to a word")
+    parser.add_argument("num")
+    args = parser.parse_args()
+    generate_combinations(args.num)
